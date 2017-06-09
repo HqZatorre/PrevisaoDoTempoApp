@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PrevisaoDoTempo.iml" filepath="$PROJECT_DIR$/PrevisaoDoTempo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrevisaoDoTempoApp.iml" filepath="$PROJECT_DIR$/PrevisaoDoTempoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
