@@ -12,8 +12,6 @@ import org.xml.sax.InputSource;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,17 +30,10 @@ public class InpeApiHelper {
 
     public List<Cidade> listaCidades() {
         String response = null;
-        Future<String> future = null;
         try {
-            future = HttpHelper.getHTML(context.getString(R.string.api_cidades));
+            HttpHelper httpHelper = new HttpHelper();
+            response = httpHelper.getHtmlString(context.getString(R.string.api_cidades));
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            response = future.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         if (response != null) {
