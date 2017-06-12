@@ -1,7 +1,9 @@
-package com.exercicio.hqzatorre.previsaodotempo;
+package com.exercicio.hqzatorre.previsaodotempo.models;
 
 /**
  * Created by lab on 6/8/17.
+ * enum de UF com capitais e do id IBGE copiado de:
+ * https://github.com/caelum/caelum-stella/blob/master/stella-nfe/src/main/java/br/com/caelum/stella/nfe/Estados.java
  */
 
 public enum Estado {

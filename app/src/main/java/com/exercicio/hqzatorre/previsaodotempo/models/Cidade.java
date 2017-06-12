@@ -1,9 +1,10 @@
-package com.exercicio.hqzatorre.previsaodotempo;
+package com.exercicio.hqzatorre.previsaodotempo.models;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 /**
  * Created by lab on 6/8/17.
+ * para buscar id de cidade de http://servicos.cptec.inpe.br/XML/#res-busca-localidade
  */
 
 public class Cidade {
