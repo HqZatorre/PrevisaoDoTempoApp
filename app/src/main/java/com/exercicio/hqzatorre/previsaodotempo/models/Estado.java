@@ -43,9 +43,10 @@ public enum Estado {
         this.nome = nome;
     }
 
-    public String getCodigo() {
-        return Integer.toString(codigoIbge);
+    public int getCodigo() {
+        return codigoIbge;
     }
+
 
     public String getNome() {
         return nome;
@@ -53,5 +54,45 @@ public enum Estado {
 
     public int getCodigoIbge() {
         return codigoIbge;
+    }
+
+    /**
+     *
+     * @param idIbge id segundo ibge do estado.
+     * @return Estado
+     */
+    public Estado fromIdIbge(int idIbge) {
+        for (Estado estado : Estado.values()) {
+            if (estado.getCodigo() == idIbge) {
+                return estado;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param nome por extenso do estado eg: "Mato Grosso"
+     * @return Estado
+     */
+    public Estado fromNome(String nome) {
+        for (Estado estado : Estado.values()) {
+            if (estado.getNome().toUpperCase().equals(nome.toUpperCase())) {
+                return estado;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param string valor em string do enum eg: "AC"
+     * @return Estado
+     */
+    public Estado fromEnumString(String string) {
+        for (Estado estado : Estado.values()) {
+            if (estado.name().equals(string)) {
+                return estado;
+            }
+        }
+        return null;
     }
 }

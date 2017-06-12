@@ -1,18 +1,20 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 /**
  * Created by lab on 6/8/17.
  * para buscar id de cidade de http://servicos.cptec.inpe.br/XML/#res-busca-localidade
  */
 
 public class Cidade {
-    @JacksonXmlProperty
+    /*
+    <cidade>
+     <nome>São Paulo</nome>
+     <uf>SP</uf>
+     <id>244</id>
+   </cidade>
+    */
     private String nome;
-    @JacksonXmlProperty()
     private Estado uf;
-    @JacksonXmlProperty
     private Integer id;
 
     public Estado getUf() {
