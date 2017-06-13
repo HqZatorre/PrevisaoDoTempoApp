@@ -1,10 +1,14 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 /**
  * Created by lab on 6/8/17.
  * para buscar id de cidade de http://servicos.cptec.inpe.br/XML/#res-busca-localidade
  */
 
+@Root
 public class Cidade {
     /*
     <cidade>
@@ -13,8 +17,11 @@ public class Cidade {
      <id>244</id>
    </cidade>
     */
+    @Element
     private String nome;
+    @Element
     private Estado uf;
+    @Element
     private Integer id;
 
     public Estado getUf() {

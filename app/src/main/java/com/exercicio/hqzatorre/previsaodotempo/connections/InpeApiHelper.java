@@ -4,7 +4,10 @@ import android.content.Context;
 
 import com.exercicio.hqzatorre.previsaodotempo.R;
 import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
+import com.exercicio.hqzatorre.previsaodotempo.models.Cidades;
 
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -37,28 +40,16 @@ public class InpeApiHelper {
             e.printStackTrace();
         }
         if (response != null) {
-            InputSource inputSource = new InputSource();
-            inputSource.setByteStream(new ByteArrayInputStream(response.getBytes(StandardCharsets.UTF_8)));
-            Document document = parseXML(inputSource);
-            System.out.println(document);
-
-            NodeList cidades = document.getElementsByTagName("cidades");
-            for (int i = 0; i < cidades.getLength(); i++) {
-                Cidade cidade = new Cidade();
-                cidades.item(i);
-                System.out.println(cidades.item(i).toString());
-            }
+            Cidades cidades = parseXMLCidades(response);
+            return cidades.getCidades();
         }
         return null;
     }
 
-    static public Document parseXML(InputSource source) {
+    static private Cidades parseXMLCidades(String source) {
         try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            dbf.setNamespaceAware(false);
-            dbf.setValidating(false);
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            return db.parse(source);
+            Serializer serializer = new Persister();
+            return serializer.read(Cidades.class, source);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
