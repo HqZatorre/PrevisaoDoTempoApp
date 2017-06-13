@@ -19,7 +19,7 @@ public class HttpHelper {
 
     public  String getHtmlString(final String urlToRead) throws Exception {
         HttpAsync httpAsync = new HttpAsync();
-        httpAsync.doInBackground(urlToRead);
+        httpAsync.execute(urlToRead);
         return httpAsync.get();
     }
 
