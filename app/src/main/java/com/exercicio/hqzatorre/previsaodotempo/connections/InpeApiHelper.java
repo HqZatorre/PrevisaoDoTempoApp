@@ -8,16 +8,8 @@ import com.exercicio.hqzatorre.previsaodotempo.models.Cidades;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Created by lab on 6/12/17.
@@ -41,7 +33,7 @@ public class InpeApiHelper {
         }
         if (response != null) {
             Cidades cidades = parseXMLCidades(response);
-            return cidades.getCidades();
+            return cidades != null ? cidades.getCidades() : null;
         }
         return null;
     }
