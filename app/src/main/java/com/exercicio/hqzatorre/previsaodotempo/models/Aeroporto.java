@@ -1,11 +1,30 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by lab on 6/9/17.
  * para pegar lista de condicoes atuais por estacao meteorolocia de
  * http://servicos.cptec.inpe.br/XML/#req-estacoes-meteorologicas
+ * http://servicos.cptec.inpe.br/XML/estacao/SBGR/condicoesAtuais.xml
  */
 
+/*
+ <metar>
+ <codigo>SBGR</codigo>
+ <atualizacao>08/08/2011 16:00:00</atualizacao>
+ <pressao>1017</pressao>
+ <temperatura>30</temperatura>
+ <tempo>cl</tempo>
+ <tempo_desc>Céu Claro</tempo_desc>
+ <umidade>35</umidade>
+ <vento_dir>300</vento_dir>
+ <vento_int>18</vento_int>
+ <visibilidade>>10000</visibilidade>
+ </metar>
+ */
 public enum Aeroporto {
     SBTK("Tarauacá", Estado.AC),
     SBRB("Presidente Médici", Estado.AC),
@@ -130,5 +149,41 @@ public enum Aeroporto {
     Aeroporto(String cidade, Estado estado) {
         this.cidade = cidade;
         this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    /**
+     * Para pegar aeroporto a partir do código
+     *
+     * @param codigo do aeroporto
+     * @return Aeroporto
+     */
+    static public Aeroporto fromCodigo(String codigo) {
+        for (Aeroporto aeroporto : Aeroporto.values()) {
+            if (aeroporto.name().equals(codigo)) {
+                return aeroporto;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Retornar lista de aeroporto para Estado.
+     * @param estado Estado
+     * @return aeroportoArrayList
+     */
+    static public List<Aeroporto> fromEstado(final Estado estado) {
+        // não utilizar collect(Collectors.toList()) nem Arrays.stream() para manter compatibilidade com api < 21
+        ArrayList<Aeroporto> aeroportoArrayList = new ArrayList<>();
+        //noinspection SimplifyStreamApiCallChains
+        Arrays.asList(Aeroporto.values()).stream().filter(a -> a.getEstado() == estado).forEach(aeroportoArrayList::add);
+        return aeroportoArrayList;
     }
 }
