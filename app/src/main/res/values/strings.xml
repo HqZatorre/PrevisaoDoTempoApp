@@ -4,15 +4,15 @@
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-busca-localidade -->
     <string name="api_cidades">http://servicos.cptec.inpe.br/XML/listaCidades</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-estacoes-meteorologicas  %s: codigo da estacao meterologica Aeroport -->
-    <string name="api_condicoes_atuais_estacao">http://servicos.cptec.inpe.br/XML/estacao/%s/condicoesAtuais.xml</string>
+    <string name="api_condicoes_atuais_estacao" formatted="false">http://servicos.cptec.inpe.br/XML/estacao/%s/condicoesAtuais.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-4-dias %d: id da cidade -->
-    <string name="api_previsao_4_dias">http://servicos.cptec.inpe.br/XML/cidade/%d/previsao.xml</string>
+    <string name="api_previsao_4_dias" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/previsao.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-7-dias %d: id da cidade -->
-    <string name="api_previsao_7_dias">http://servicos.cptec.inpe.br/XML/cidade/7dias/%d/previsao.xml</string>
+    <string name="api_previsao_7_dias" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/7dias/%d/previsao.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-7-dias  %d: latitude, %d longitude -->
-    <string name="api_previsao_7_dias_latlon">http://servicos.cptec.inpe.br/XML/cidade/7dias/%d/%d/previsaoLatLon.xml</string>
+    <string name="api_previsao_7_dias_latlon" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/7dias/%d/%d/previsaoLatLon.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-estendida %d: id da cidade -->
-    <string name="api_previsao_estendida">http://servicos.cptec.inpe.br/XML/cidade/%d/estendida.xml</string>
+    <string name="api_previsao_estendida" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/estendida.xml</string>
      <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-estendida %d: latitude, %d longitude -->
-    <string name="api_previsao_estendida_latlon">http://servicos.cptec.inpe.br/XML/cidade/%d/%d/estendidaLatLon.xml</string>
+    <string name="api_previsao_estendida_latlon" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/%d/estendidaLatLon.xml</string>
 </resources>

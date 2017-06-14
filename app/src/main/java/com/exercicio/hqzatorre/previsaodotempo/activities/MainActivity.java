@@ -1,10 +1,11 @@
-package com.exercicio.hqzatorre.previsaodotempo;
+package com.exercicio.hqzatorre.previsaodotempo.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.exercicio.hqzatorre.previsaodotempo.models.CidadesAdapter;
+import com.exercicio.hqzatorre.previsaodotempo.R;
+import com.exercicio.hqzatorre.previsaodotempo.adapters.CidadesAdapter;
 
 public class MainActivity extends Activity {
     private CidadesAdapter cidadesAdapter;

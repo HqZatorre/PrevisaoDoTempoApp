@@ -1,4 +1,4 @@
-package com.exercicio.hqzatorre.previsaodotempo.models;
+package com.exercicio.hqzatorre.previsaodotempo.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.exercicio.hqzatorre.previsaodotempo.R;
 import com.exercicio.hqzatorre.previsaodotempo.connections.InpeApiHelper;
+import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
 
 import java.util.List;
 
