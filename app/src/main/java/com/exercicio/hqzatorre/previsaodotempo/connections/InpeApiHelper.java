@@ -9,6 +9,7 @@ import com.exercicio.hqzatorre.previsaodotempo.models.Cidades;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -28,6 +29,23 @@ public class InpeApiHelper {
         try {
             HttpHelper httpHelper = new HttpHelper();
             response = httpHelper.getHtmlString(context.getString(R.string.api_cidades));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (response != null) {
+            Cidades cidades = parseXMLCidades(response);
+            return cidades != null ? cidades.getCidades() : null;
+        }
+        return null;
+    }
+
+    public List<Cidade> buscaCidade(String cidade) {
+        String response = null;
+        try {
+            HttpHelper httpHelper = new HttpHelper();
+            response = httpHelper.getHtmlString(context.getString(R.string.api_cidades)
+                    .concat("?city=")
+                    .concat(URLEncoder.encode(cidade, java.nio.charset.StandardCharsets.UTF_8.toString())));
         } catch (Exception e) {
             e.printStackTrace();
         }

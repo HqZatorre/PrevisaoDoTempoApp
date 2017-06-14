@@ -101,4 +101,23 @@
         android:layout_toEndOf="@+id/display"
         android:layout_above="@+id/list_cidades" />
 
+    <EditText
+        android:id="@+id/txt_cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/display"
+        android:layout_below="@+id/display"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/hint_cidade" />
+
+    <Button
+        android:id="@+id/btn_busca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/txt_cidade"
+        android:text="@string/txt_buscar_btn" />
+
 </RelativeLayout>

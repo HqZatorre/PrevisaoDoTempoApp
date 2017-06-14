@@ -15,4 +15,6 @@
     <string name="api_previsao_estendida" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/estendida.xml</string>
      <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-estendida %d: latitude, %d longitude -->
     <string name="api_previsao_estendida_latlon" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/%d/estendidaLatLon.xml</string>
+    <string name="hint_cidade">cidade</string>
+    <string name="txt_buscar_btn">buscar</string>
 </resources>
