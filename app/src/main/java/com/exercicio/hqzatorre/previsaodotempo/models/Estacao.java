@@ -25,7 +25,7 @@ import java.util.List;
  <visibilidade>>10000</visibilidade>
  </metar>
  */
-public enum Aeroporto {
+public enum Estacao {
     SBTK("Tarauacá", Estado.AC),
     SBRB("Presidente Médici", Estado.AC),
     SBCZ("Internacional", Estado.AC),
@@ -146,7 +146,7 @@ public enum Aeroporto {
     private final String cidade;
     private final Estado estado;
 
-    Aeroporto(String cidade, Estado estado) {
+    Estacao(String cidade, Estado estado) {
         this.cidade = cidade;
         this.estado = estado;
     }
@@ -163,12 +163,12 @@ public enum Aeroporto {
      * Para pegar aeroporto a partir do código
      *
      * @param codigo do aeroporto
-     * @return Aeroporto
+     * @return Estacao
      */
-    static public Aeroporto fromCodigo(String codigo) {
-        for (Aeroporto aeroporto : Aeroporto.values()) {
-            if (aeroporto.name().equals(codigo)) {
-                return aeroporto;
+    static public Estacao fromCodigo(String codigo) {
+        for (Estacao estacao : Estacao.values()) {
+            if (estacao.name().equals(codigo)) {
+                return estacao;
             }
         }
         return null;
@@ -179,11 +179,11 @@ public enum Aeroporto {
      * @param estado Estado
      * @return aeroportoArrayList
      */
-    static public List<Aeroporto> fromEstado(final Estado estado) {
+    static public List<Estacao> fromEstado(final Estado estado) {
         // não utilizar collect(Collectors.toList()) nem Arrays.stream() para manter compatibilidade com api < 21
-        ArrayList<Aeroporto> aeroportoArrayList = new ArrayList<>();
+        ArrayList<Estacao> estacaoArrayList = new ArrayList<>();
         //noinspection SimplifyStreamApiCallChains
-        Arrays.asList(Aeroporto.values()).stream().filter(a -> a.getEstado() == estado).forEach(aeroportoArrayList::add);
-        return aeroportoArrayList;
+        Arrays.asList(Estacao.values()).stream().filter(estacao -> estacao.getEstado() == estado).forEach(estacaoArrayList::add);
+        return estacaoArrayList;
     }
 }
