@@ -2,21 +2,20 @@ package com.exercicio.hqzatorre.previsaodotempo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ListView;
 
-import com.exercicio.hqzatorre.previsaodotempo.connections.InpeApiHelper;
-import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
-
-import java.util.List;
+import com.exercicio.hqzatorre.previsaodotempo.models.CidadesAdapter;
 
 public class MainActivity extends Activity {
+    private CidadesAdapter cidadesAdapter;
+    private ListView cidadesListView;
 
-    private List<Cidade> cidadeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        InpeApiHelper apiHelper = new InpeApiHelper(this);
-
-        cidadeList = apiHelper.listaCidades();
+        cidadesAdapter = new CidadesAdapter(this);
+        cidadesListView = (ListView) findViewById(R.id.list_cidades);
+        cidadesListView.setAdapter(cidadesAdapter);
     }
 }
