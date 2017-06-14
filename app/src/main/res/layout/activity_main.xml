@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.exercicio.hqzatorre.previsaodotempo.MainActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:context="com.exercicio.hqzatorre.previsaodotempo.MainActivity">
 
     <LinearLayout
         android:id="@+id/display"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false"
         tools:layout_constraintTop_creator="1"
@@ -26,10 +24,9 @@
 
         <LinearLayout
             android:id="@+id/esquerda"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_width="145dp"
+            android:layout_height="123dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nome"
@@ -78,23 +75,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/chuvoso"
-                android:importantForAccessibility="no" />
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
     </LinearLayout>
 
     <ListView
         android:id="@+id/list_cidades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        tools:layout_constraintLeft_creator="1"
+        android:layout_below="@id/display"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="45dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/chuvoso"
+        android:importantForAccessibility="no"
+        android:layout_toEndOf="@+id/display"
+        android:layout_above="@+id/list_cidades" />
+
+</RelativeLayout>
