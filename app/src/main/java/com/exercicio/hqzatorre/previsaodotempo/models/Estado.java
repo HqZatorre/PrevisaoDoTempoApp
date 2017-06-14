@@ -57,11 +57,10 @@ public enum Estado {
     }
 
     /**
-     *
      * @param idIbge id segundo ibge do estado.
      * @return Estado
      */
-    public Estado fromIdIbge(int idIbge) {
+    static public Estado fromIdIbge(int idIbge) {
         for (Estado estado : Estado.values()) {
             if (estado.getCodigo() == idIbge) {
                 return estado;
@@ -74,7 +73,7 @@ public enum Estado {
      * @param nome por extenso do estado eg: "Mato Grosso"
      * @return Estado
      */
-    public Estado fromNome(String nome) {
+    static public Estado fromNome(String nome) {
         for (Estado estado : Estado.values()) {
             if (estado.getNome().toUpperCase().equals(nome.toUpperCase())) {
                 return estado;
@@ -87,7 +86,7 @@ public enum Estado {
      * @param string valor em string do enum eg: "AC"
      * @return Estado
      */
-    public Estado fromEnumString(String string) {
+    static public Estado fromEnumString(String string) {
         for (Estado estado : Estado.values()) {
             if (estado.name().equals(string)) {
                 return estado;
