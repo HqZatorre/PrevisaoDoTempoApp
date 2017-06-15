@@ -5,9 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.exercicio.hqzatorre.previsaodotempo.R;
@@ -18,11 +17,12 @@ import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
 import java.util.List;
 
 /**
- * Created by lab on 6/13/17.
+ * Created by labiuai@gmail.com on 6/13/17.
  */
 
 public class CidadesAdapter extends BaseAdapter implements ListAdapter {
     private List<Cidade> cidadeList;
+    private ListView previsoesListView;
     private final Context context;
     private final InpeApiHelper inpeApiHelper;
 
@@ -30,6 +30,7 @@ public class CidadesAdapter extends BaseAdapter implements ListAdapter {
         this.context = context;
         inpeApiHelper = new InpeApiHelper(context);
         cidadeList = inpeApiHelper.listaCidades();
+        previsoesListView = (ListView) ((MainActivity) context).findViewById(R.id.list_previsoes);
     }
 
     @Override
@@ -57,9 +58,6 @@ public class CidadesAdapter extends BaseAdapter implements ListAdapter {
 
         final TextView txtCidadeNome = (TextView) view.findViewById(R.id.txt_cidade_nome);
         final TextView txtCidadeUf = (TextView) view.findViewById(R.id.txt_cidade_uf);
-        final EditText txtBuscaCidade = (EditText) ((MainActivity) context).findViewById(R.id.txt_cidade);
-        final Button btnBusca = (Button) ((MainActivity) context).findViewById(R.id.btn_busca);
-
 
         Cidade cidade = (Cidade) getItem(position);
         if (cidade != null) {
@@ -67,11 +65,22 @@ public class CidadesAdapter extends BaseAdapter implements ListAdapter {
             txtCidadeUf.setText(cidade.getUf().name());
         }
 
-        btnBusca.setOnClickListener(v -> {
-            String cidadeBusca = txtBuscaCidade.getText() != null ? txtBuscaCidade.getText().toString() : "";
-            cidadeList = inpeApiHelper.buscaCidade(cidadeBusca);
-            notifyDataSetChanged();
+        // quando uma cidade for selecionada busca a previsao de quatro dias.
+        view.setOnClickListener(v -> {
+            try {
+                Cidade cidadeTmp = inpeApiHelper.fetchPrevisaoQuatroDias((Cidade) getItem(position));
+                ((MainActivity) context).getNomeCidade().setText(cidadeTmp.getNome());
+                PrevisaoAdapter previsaoAdapter = new PrevisaoAdapter(context, cidadeTmp.getPrevisaoList());
+                previsoesListView.setAdapter(previsaoAdapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         return view;
+    }
+
+    public void buscaCidade(String nomeCidade) {
+        cidadeList = inpeApiHelper.buscaCidade(nomeCidade);
+        notifyDataSetChanged();
     }
 }

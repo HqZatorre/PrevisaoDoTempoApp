@@ -5,6 +5,8 @@ import android.content.Context;
 import com.exercicio.hqzatorre.previsaodotempo.R;
 import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
 import com.exercicio.hqzatorre.previsaodotempo.models.Cidades;
+import com.exercicio.hqzatorre.previsaodotempo.models.CondicoesAtuais;
+import com.exercicio.hqzatorre.previsaodotempo.models.Estacao;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -54,6 +56,43 @@ public class InpeApiHelper {
             return cidades != null ? cidades.getCidades() : null;
         }
         return null;
+    }
+
+    public CondicoesAtuais fetchCondicoesAtuais(Estacao estacao) {
+        String response = null;
+        try {
+            HttpHelper httpHelper = new HttpHelper();
+            response = httpHelper.getHtmlString(
+                    String.format(context.getString(R.string.api_condicoes_atuais_estacao), estacao.name()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        CondicoesAtuais condicoesAtuais = null;
+        if (response != null) {
+            condicoesAtuais = parseXMLCondicesAtuais(response);
+        }
+        return condicoesAtuais;
+    }
+
+    public Cidade fetchPrevisaoQuatroDias(Cidade cidade) throws Exception {
+        HttpHelper httpHelper = new HttpHelper();
+        return parseXmlCidadePrevisao(httpHelper.getHtmlString(
+                String.format(context.getString(R.string.api_previsao_4_dias), cidade.getId())));
+    }
+
+    static private CondicoesAtuais parseXMLCondicesAtuais(String source) {
+        try {
+            Serializer serializer = new Persister();
+            return serializer.read(CondicoesAtuais.class, source);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static private Cidade parseXmlCidadePrevisao(String source) throws Exception {
+        Serializer serializer = new Persister();
+        return serializer.read(Cidade.class, source);
     }
 
     static private Cidades parseXMLCidades(String source) {
