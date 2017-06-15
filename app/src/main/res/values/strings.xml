@@ -3,4 +3,6 @@
     <string name="teste">Teste</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-busca-localidade -->
     <string name="api_cidades">http://servicos.cptec.inpe.br/XML/listaCidades</string>
+    <string name="api_aeroportos">http://servicos.cptec.inpe.br/XML/capitais/condicoesAtuais.xml</string>
+    <string name="api_previsao">http://servicos.cptec.inpe.br/XML/cidade/7dias/%d/previsao.xml</string>
 </resources>

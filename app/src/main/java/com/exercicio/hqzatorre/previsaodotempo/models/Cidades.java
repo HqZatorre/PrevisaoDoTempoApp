@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Wallace on 13/06/2017.
  */
 
-@Root
+@Root(strict=false)
 public class Cidades {
 
     @ElementList(inline=true)

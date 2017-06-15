@@ -1,14 +1,17 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.ArrayList;
 
 /**
  * Created by lab on 6/8/17.
  * para buscar id de cidade de http://servicos.cptec.inpe.br/XML/#res-busca-localidade
  */
 
-@Root
+@Root(strict = false)
 public class Cidade {
     /*
     <cidade>
@@ -21,8 +24,10 @@ public class Cidade {
     private String nome;
     @Element
     private Estado uf;
-    @Element
+    @Element(required = false)
     private Integer id;
+    @ElementList(inline=true, required = false)
+    private ArrayList<Previsao> previsao;
 
     public Estado getUf() {
         return uf;
@@ -48,4 +53,11 @@ public class Cidade {
         this.id = id;
     }
 
+    public ArrayList<Previsao> getPrevisao() {
+        return previsao;
+    }
+
+    public void setPrevisao(ArrayList<Previsao> previsao) {
+        this.previsao = previsao;
+    }
 }
