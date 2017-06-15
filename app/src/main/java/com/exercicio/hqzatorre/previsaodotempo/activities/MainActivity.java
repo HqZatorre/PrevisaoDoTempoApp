@@ -15,9 +15,6 @@ public class MainActivity extends Activity {
     private ListView cidadesListView;
     private TextView temperatura;
     private TextView abreviacao;
-    private TextView temperaturaDois;
-    private TextView temperaturaTres;
-    private TextView temperaturaQuatro;
 
 
     @Override
