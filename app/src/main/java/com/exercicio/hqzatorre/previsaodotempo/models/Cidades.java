@@ -9,11 +9,11 @@ import java.util.List;
  * Created by Wallace on 13/06/2017.
  */
 
-@Root(strict=false)
+@Root(strict = false)
 public class Cidades {
 
-    @ElementList(inline=true)
-    List<Cidade> cidades;
+    @ElementList(inline=true, required = false)
+    private List<Cidade> cidades;
 
     public List<Cidade> getCidades() {
         return cidades;

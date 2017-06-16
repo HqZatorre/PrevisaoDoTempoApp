@@ -1,9 +1,14 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
 /**
- * Created by Wallace on 15/06/2017.
+ * Created by labiuai@gmail.com on 6/15/17.
  */
-
+/*
+ Em letra minúscula porque não consegui descobri como fazer o simplexml utilizar um Converter
+ ou um setter determinado. Atualmente ele pega enum com valueOf então os enums precisam ser iguais às
+ strings retornadas pela api do inpe.
+ http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+ */
 public enum Tempo {
     ec("Encoberto com Chuvas Isoladas"),
     ci("Chuvas Isoladas"),
@@ -45,9 +50,9 @@ public enum Tempo {
     ppn("Poss. de Panc. de Chuva a Noite"),
     ppt("Poss. de Panc. de Chuva a Tarde"),
     ppm("Poss. de Panc. de Chuva pela Manhã");
+    private final String descricao;
 
-    private String descricao;
-    Tempo(String descricao){
+    Tempo(String descricao) {
         this.descricao = descricao;
     }
 
@@ -55,7 +60,13 @@ public enum Tempo {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    static public Tempo fromDescricao(String descricao) {
+        for (Tempo t : Tempo.values()) {
+            if (t.getDescricao().equals(descricao)) {
+                return t;
+            }
+        }
+        return null;
     }
+
 }
