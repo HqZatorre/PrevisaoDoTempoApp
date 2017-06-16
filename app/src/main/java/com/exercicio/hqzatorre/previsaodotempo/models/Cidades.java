@@ -12,7 +12,7 @@ import java.util.List;
 @Root(strict = false)
 public class Cidades {
 
-    @ElementList(inline=true)
+    @ElementList(inline=true, required = false)
     private List<Cidade> cidades;
 
     public List<Cidade> getCidades() {

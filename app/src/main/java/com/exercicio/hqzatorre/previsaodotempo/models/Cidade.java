@@ -1,6 +1,7 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.Date;
@@ -41,9 +42,9 @@ import java.util.List;
 */
 @Root(strict = false)
 public class Cidade {
-    @Element
+    @Element(required = false)
     private String nome;
-    @Element
+    @Element(required = false)
     private Estado uf;
     @Element(required = false)
     private Integer id;

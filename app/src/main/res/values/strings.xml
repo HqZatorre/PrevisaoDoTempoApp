@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">Previsão do Tempo</string>
-    <string name="teste">Teste</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-busca-localidade -->
     <string name="api_cidades">http://servicos.cptec.inpe.br/XML/listaCidades</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-estacoes-meteorologicas  %s: codigo da estacao meterologica Aeroport -->
-    <string name="api_condicoes_atuais_estacao" formatted="false">http://servicos.cptec.inpe.br/XML/estacao/%s/condicoesAtuais.xml</string>
+    <string name="api_aeroportos" formatted="false">http://servicos.cptec.inpe.br/XML/estacao/%s/condicoesAtuais.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-4-dias %d: id da cidade -->
     <string name="api_previsao_4_dias" formatted="false">http://servicos.cptec.inpe.br/XML/cidade/%d/previsao.xml</string>
     <!-- api: http://servicos.cptec.inpe.br/XML/#req-previsao-7-dias %d: id da cidade -->

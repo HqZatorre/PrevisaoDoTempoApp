@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 
 import com.exercicio.hqzatorre.previsaodotempo.connections.InpeApiHelper;
-import com.exercicio.hqzatorre.previsaodotempo.models.Estacao;
+import com.exercicio.hqzatorre.previsaodotempo.models.Aeroporto;
 
 import java.util.List;
 
@@ -15,30 +15,30 @@ import java.util.List;
  * Created by labiuai@gmail.com on 6/15/17.
  */
 
-public class EstacoesAdapter extends BaseAdapter implements ListAdapter {
-    private final List<Estacao> estacoes;
+public class AeroportosAdapter extends BaseAdapter implements ListAdapter {
+    private final List<Aeroporto> aeroportos;
     private final Context context;
     private final InpeApiHelper inpeApiHelper;
 
-    public EstacoesAdapter(List<Estacao> estacoes, Context context) {
-        this.estacoes = estacoes;
+    public AeroportosAdapter(List<Aeroporto> aeroportos, Context context) {
+        this.aeroportos = aeroportos;
         this.context = context;
         this.inpeApiHelper = new InpeApiHelper(context);
     }
 
     @Override
     public int getCount() {
-        return estacoes.size();
+        return aeroportos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return estacoes.size() > position ? estacoes.get(position) : null;
+        return aeroportos.size() > position ? aeroportos.get(position) : null;
     }
 
     @Override
     public long getItemId(int position) {
-        return estacoes.size() > position ? estacoes.get(position).ordinal() : -1;
+        return 0;
     }
 
     @Override
