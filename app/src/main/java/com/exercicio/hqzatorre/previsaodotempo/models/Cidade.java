@@ -1,7 +1,6 @@
 package com.exercicio.hqzatorre.previsaodotempo.models;
 
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.Date;

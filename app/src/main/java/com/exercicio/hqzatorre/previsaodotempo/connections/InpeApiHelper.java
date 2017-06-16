@@ -5,13 +5,10 @@ import android.content.Context;
 import com.exercicio.hqzatorre.previsaodotempo.R;
 import com.exercicio.hqzatorre.previsaodotempo.models.Cidade;
 import com.exercicio.hqzatorre.previsaodotempo.models.Cidades;
-import com.exercicio.hqzatorre.previsaodotempo.models.CondicoesAtuais;
-import com.exercicio.hqzatorre.previsaodotempo.models.Estacao;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -96,9 +93,41 @@ public class InpeApiHelper {
     }
 
     static private Cidades parseXMLCidades(String source) {
+    public List<Aeroporto> situacaoAtualAeroportos(){
+        String response = null;
+        try{
+            HttpHelper httpHelper = new HttpHelper();
+            response = httpHelper.getHtmlString(context.getString(R.string.api_aeroportos));
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        if(response != null){
+            Aeroportos aeroportos = (Aeroportos) parseXML(Aeroportos.class, response);
+            return aeroportos != null ? aeroportos.getAeroportos() : null;
+        }
+        return null;
+    }
+
+    public Cidade previsaoDoTempo(int codigoCidade){
+        String response = null;
+        try{
+            HttpHelper httpHelper = new HttpHelper();
+            String urltoRead = String.format(context.getString(R.string.api_previsao), codigoCidade);
+            response = httpHelper.getHtmlString(urltoRead);
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+        if(response != null){
+            Cidade cidade = (Cidade) parseXML(Cidade.class, response);
+            return cidade != null ? cidade : null;
+        }
+        return null;
+    }
+
+    static private Object parseXML(Class clazz, String source) {
         try {
             Serializer serializer = new Persister();
-            return serializer.read(Cidades.class, source);
+            return serializer.read(Class.forName(clazz.getName()) , source);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
